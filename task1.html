@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, p {
+            text-align: center;
+        }
+        .candidates {
+            list-style-type: none;
+            padding: 0;
+        }
+        .candidate-item {
+            margin-bottom: 10px;
+        }
+        button {
+            display: block;
+            margin: 0 auto;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Voting System</h1>
+        <p>Please select a candidate and click the Vote button.</p>
+        <ul class="candidates">
+            <li class="candidate-item"><input type="radio" name="candidate" value="Candidate A"> Candidate A</li>
+            <li class="candidate-item"><input type="radio" name="candidate" value="Candidate B"> Candidate B</li>
+            <li class="candidate-item"><input type="radio" name="candidate" value="Candidate C"> Candidate C</li>
+        </ul>
+        <button onclick="submitVote()">Vote</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function submitVote() {
+            var selectedCandidate = document.querySelector('input[name="candidate"]:checked');
+            if (selectedCandidate) {
+                var candidateName = selectedCandidate.value;
+                document.getElementById("message").innerHTML = "Thank you for voting for " + candidateName + "!";
+                // Here you would typically submit the vote to a server-side script for processing
+            } else {
+                document.getElementById("message").innerHTML = "Please select a candidate before voting.";
+            }
+        }
+    </script>
+</body>
+</html>
